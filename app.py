@@ -104,7 +104,7 @@ def videoInput(device, src):
 def main():
     # -- Sidebar
     st.sidebar.title('⚙️Options')
-    datasrc = st.sidebar.radio("Select input source.", ['From test set.', 'Upload your own data.'])
+    datasrc = st.sidebar.radio("Select input source.", ['Upload your own data.','From test set.'])
     
         
                 
