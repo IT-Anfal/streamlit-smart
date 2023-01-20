@@ -117,8 +117,8 @@ def main():
     
     img_logo = Image.open(os.path.join('data/images', os.path.basename("smartathonLogo.png")))
     st.image(img_logo, caption='Smartathon')
-    st.header('📦Obstacle Detection')
-    st.subheader('👈🏽 Select options left-haned menu bar.')
+    st.header('👀 Visual Pollution Detection')
+    st.subheader('👈🏻 Select options left-haned menu bar.')
     st.sidebar.markdown("https://smartathon.hackerearth.com/challenges/hackathon/smartathon-2/dashboard/ae23dcf/team/?utm_source=team-invite&utm_medium=email&utm_campaign=hackathons")
     if option == "Image":    
         imageInput(deviceoption, datasrc)
