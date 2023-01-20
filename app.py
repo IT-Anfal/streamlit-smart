@@ -117,8 +117,8 @@ def main():
     
     img_logo = Image.open(os.path.join('data/images', os.path.basename("smartathonLogo.png")))
     st.image(img_logo, caption='Smartathon')
-    st.title("Smartathon visual pollution Detection App")
-    st.caption('This web application demostrate visual pollution detection')
+    st.title("Visual Pollution Detection App")
+    st.caption('developed by: Maseal Alghamdi, Abdullah Alshaya, Abdullah Alzaben, Anfal AlAwajy, Nada AlMugren, Sarah Alghamdi')
 #     st.header('👀 Visual Pollution Detection')
     st.subheader('👈🏻 Select options left-haned menu bar.')
     st.sidebar.markdown("https://smartathon.hackerearth.com/challenges/hackathon/smartathon-2/dashboard/ae23dcf/team/?utm_source=team-invite&utm_medium=email&utm_campaign=hackathons")
