@@ -4,8 +4,8 @@ st.set_page_config(page_title="3YON team",
                    layout='wide',
                    page_icon='./icons/about.png')
 
-st.subheader("3yon Team")
-st.title("our wonderful team consists of: ")
+st.title("3yon Team")
+st.subheader("our wonderful team consists of: ")
 st.write("   ●   Maseal Alghamdi, PhD")
 st.write("   ●   Abdullah Alshaya")
 st.write("   ●   Abdullah Alzaben")
