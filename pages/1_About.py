@@ -17,4 +17,4 @@ st.write("   ●   Sarah Alghamdi")
 st.write("check out our smartathon [page](https://smartathon.hackerearth.com/challenges/hackathon/smartathon-2/dashboard/ae23dcf/team/?utm_source=team-invite&utm_medium=email&utm_campaign=hackathons)")
 
 st.subheader("Demo of our model: ")
-st.video("https://drive.google.com/file/d/1ttJ8vZr1aNHPEYr-rsv8pott2d1tHvQP/view?usp=sharing")
+st.video("https://youtube.com/shorts/vO1KiOklygE?feature=share")
