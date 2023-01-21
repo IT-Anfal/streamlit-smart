@@ -14,13 +14,18 @@ cfg_model_path = "models/yourModel.pt"
 
 cfg_enable_url_download = True
 if cfg_enable_url_download:
-    urls = [ "https://archive.org/download/yoloXSmart/yoloXSmart.pt","https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloMSmart.pt", "https://archive.org/download/yoloLSmart/yoloSSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt"] #Configure this if you set cfg_enable_url_download to True
-    cfg_model_path = f"models/{urls[0].split('/')[-1:][0]}"
-    i = 1
-    for i in range(len(urls)):
-        cfg_model_path += f" models/{urls[i].split('/')[-1:][0]}" #config model path from url name   
-         #cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
+    url = "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt" #Configure this if you set cfg_enable_url_download to True
+    cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
 ## END OF CFG
+
+# if cfg_enable_url_download:
+#     urls = [ "https://archive.org/download/yoloXSmart/yoloXSmart.pt","https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloMSmart.pt", "https://archive.org/download/yoloLSmart/yoloSSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt"] #Configure this if you set cfg_enable_url_download to True
+#     cfg_model_path = f"models/{urls[0].split('/')[-1:][0]}"
+#     i = 1
+#     for i in range(len(urls)):
+#         cfg_model_path += f" models/{urls[i].split('/')[-1:][0]}" #config model path from url name   
+#          #cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
+# ## END OF CFG
 
 
 
@@ -62,7 +67,7 @@ def imageInput(device, src):
         imgpath = glob.glob('data/images/*')
         imgsel = st.slider('Select random images from test set.', min_value=1, max_value=len(imgpath), step=1) 
         image_file = imgpath[imgsel-1]
-        submit = st.button("Predict!")
+        submit = st.button("Detect 🕵🏻!")
         col1, col2 = st.columns(2)
         with col1:
             img = Image.open(image_file)
@@ -140,11 +145,16 @@ if __name__ == '__main__':
 # Downlaod Model from url.    
 @st.cache
 def loadModel():
-    for url in urls:
-        start_dl = time.time()
-        model_file = wget.download(url, out="models/")
-        finished_dl = time.time()
-        print(f"Model Downloaded, ETA:{finished_dl-start_dl}")
+    start_dl = time.time()
+    model_file = wget.download(url, out="models/")
+    finished_dl = time.time()
+    print(f"Model Downloaded, ETA:{finished_dl-start_dl}")
+    
+#     for url in urls:
+#         start_dl = time.time()
+#         model_file = wget.download(url, out="models/")
+#         finished_dl = time.time()
+#         print(f"Model Downloaded, ETA:{finished_dl-start_dl}")
     
 if cfg_enable_url_download:
     loadModel()
