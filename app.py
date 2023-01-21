@@ -96,16 +96,16 @@ def imageInput(device, src):
                 img_ = Image.open(outputpath)
                 model_name = f"{path.split('/')[-1:][0]}" 
                 with col2:
-#                     st.write(model_name)
-                    st.image(img_, caption=model_name, use_column_width='always')                model = torch.hub.load('ultralytics/yolov5', 'custom', path=cfg_model_path, force_reload=True) 
-#                 pred = model(image_file)
-#                 pred.render()  # render bbox in image
-#                 for im in pred.ims:
-#                     im_base64 = Image.fromarray(im)
-#                     im_base64.save(os.path.join('data/outputs', os.path.basename(image_file)))
-#                 #--Display predicton
-#                     img_ = Image.open(os.path.join('data/outputs', os.path.basename(image_file)))
-#                     st.image(img_, caption='Model Prediction(s)')
+                    st.image(img_, caption=model_name, use_column_width='always')                
+#     model = torch.hub.load('ultralytics/yolov5', 'custom', path=cfg_model_path, force_reload=True) 
+# #                 pred = model(image_file)
+# #                 pred.render()  # render bbox in image
+# #                 for im in pred.ims:
+# #                     im_base64 = Image.fromarray(im)
+# #                     im_base64.save(os.path.join('data/outputs', os.path.basename(image_file)))
+# #                 #--Display predicton
+# #                     img_ = Image.open(os.path.join('data/outputs', os.path.basename(image_file)))
+# #                     st.image(img_, caption='Model Prediction(s)')
 
 
 
