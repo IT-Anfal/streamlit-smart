@@ -14,8 +14,12 @@ cfg_model_path = "models/yourModel.pt"
 
 cfg_enable_url_download = True
 if cfg_enable_url_download:
-    url = "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt" #Configure this if you set cfg_enable_url_download to True
-    cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
+    urls = [ "https://archive.org/download/yoloXSmart/yoloXSmart.pt","https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloMSmart.pt", "https://archive.org/download/yoloLSmart/yoloSSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt"] #Configure this if you set cfg_enable_url_download to True
+    cfg_model_path = f"models/{urls[0].split('/')[-1:][0]}"
+    i = 1
+    for i in range(len(urls)):
+        cfg_model_path += f" models/{urls[i].split('/')[-1:][0]}" #config model path from url name    url = "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt" #Configure this if you set cfg_enable_url_download to True
+        cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
 ## END OF CFG
 
 
@@ -136,9 +140,11 @@ if __name__ == '__main__':
 # Downlaod Model from url.    
 @st.cache
 def loadModel():
-    start_dl = time.time()
-    model_file = wget.download(url, out="models/")
-    finished_dl = time.time()
-    print(f"Model Downloaded, ETA:{finished_dl-start_dl}")
+    for url in urls:
+        start_dl = time.time()
+        model_file = wget.download(url, out="models/")
+        finished_dl = time.time()
+        print(f"Model Downloaded, ETA:{finished_dl-start_dl}")
+    
 if cfg_enable_url_download:
     loadModel()
