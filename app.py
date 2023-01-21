@@ -63,8 +63,8 @@ def imageInput(device, src):
                 img_ = Image.open(outputpath)
                 model_name = f"{path.split('/')[-1:][0]}" 
                 with col2:
-                    st.write(model_name)
-                    st.image(img_, caption='Model Prediction(s)', use_column_width='always')
+#                     st.write(model_name)
+                    st.image(img_, caption=model_name, use_column_width='always')
             
 
     elif src == 'From test set.': 
@@ -79,16 +79,33 @@ def imageInput(device, src):
             st.image(img, caption='Selected Image', use_column_width='always')
         with col2:            
             if image_file is not None and submit:
+                
                 #call Model prediction--
-                model = torch.hub.load('ultralytics/yolov5', 'custom', path=cfg_model_path, force_reload=True) 
-                pred = model(image_file)
-                pred.render()  # render bbox in image
-                for im in pred.ims:
-                    im_base64 = Image.fromarray(im)
-                    im_base64.save(os.path.join('data/outputs', os.path.basename(image_file)))
-                #--Display predicton
-                    img_ = Image.open(os.path.join('data/outputs', os.path.basename(image_file)))
-                    st.image(img_, caption='Model Prediction(s)')
+                paths = cfg_model_path.split(" ")
+                for path in paths:
+                    model = torch.hub.load('ultralytics/yolov5', 'custom', path=path, force_reload=True) 
+                    model.cuda() if device == 'cuda' else model.cpu()
+                    pred = model(imgpath)
+                    pred.render()  # render bbox in image
+                    for im in pred.ims:
+                        im_base64 = Image.fromarray(im)
+                        im_base64.save(outputpath)
+
+            #--Display predicton
+            
+                img_ = Image.open(outputpath)
+                model_name = f"{path.split('/')[-1:][0]}" 
+                with col2:
+#                     st.write(model_name)
+                    st.image(img_, caption=model_name, use_column_width='always')                model = torch.hub.load('ultralytics/yolov5', 'custom', path=cfg_model_path, force_reload=True) 
+#                 pred = model(image_file)
+#                 pred.render()  # render bbox in image
+#                 for im in pred.ims:
+#                     im_base64 = Image.fromarray(im)
+#                     im_base64.save(os.path.join('data/outputs', os.path.basename(image_file)))
+#                 #--Display predicton
+#                     img_ = Image.open(os.path.join('data/outputs', os.path.basename(image_file)))
+#                     st.image(img_, caption='Model Prediction(s)')
 
 
 
