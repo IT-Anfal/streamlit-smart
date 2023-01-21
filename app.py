@@ -20,10 +20,13 @@ cfg_enable_url_download = True
 
 if cfg_enable_url_download:
     urls = [ "https://archive.org/download/yoloXSmart/yoloXSmart.pt","https://archive.org/download/yoloLSmart/yoloMSmart.pt", "https://archive.org/download/yoloLSmart/yoloLSmart.pt", "https://archive.org/download/yoloLSmart/yoloSSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt"] #Configure this if you set cfg_enable_url_download to True
-    cfg_model_path = f"models/{urls[0].split('/')[-1:][0]}"
-    i = 1
-    for i in range(len(urls)):
-        cfg_model_path += f" models/{urls[i].split('/')[-1:][0]}" #config model path from url name   
+    #cfg_model_path = f"models/{urls[0].split('/')[-1:][0]}"
+    cfg_model_path = ""
+    #i = 1
+    #for i in range(len(urls)):
+    for url in urls:
+        cfg_model_path += f" models/{url.split('/')[-1:][0]}" #config model path from url name   
+        #cfg_model_path += f" models/{urls[i].split('/')[-1:][0]}" #config model path from url name   
          #cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
 ## END OF CFG
 
