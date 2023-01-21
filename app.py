@@ -141,29 +141,29 @@ def main():
     if model_choice == 'yoloXSmart':
         url = "https://archive.org/download/yoloXSmart/yoloXSmart.pt" #Configure this if you set cfg_enable_url_download to True
         cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
-        loadModel()
+        
     
  
     elif model_choice == 'yoloLSmart':
         url = "https://archive.org/download/yoloLSmart/yoloLSmart.pt" #Configure this if you set cfg_enable_url_download to True
         cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
-        loadModel()
+        
         
     elif model_choice == 'yoloMSmart':
         url = "https://archive.org/download/yoloLSmart/yoloMSmart.pt" #Configure this if you set cfg_enable_url_download to True
         cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
-        loadModel()
+        
    
  
     elif model_choice == 'yoloSSmartPS128':
         url = "https://archive.org/download/yoloLSmart/yoloSSmartPS128.pt" #Configure this if you set cfg_enable_url_download to True
         cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
-        loadModel()
+        
  
     else:
         url = "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt" #Configure this if you set cfg_enable_url_download to True
         cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
-        loadModel()
+        
     
 
     
