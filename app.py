@@ -148,7 +148,7 @@ def main():
         deviceoption = st.sidebar.radio("Select compute Device:", ['cpu', 'cuda'], disabled = True, index=0)
     # -- End of Sidebar
     
-    img_logo = Image.open(os.path.join('data/images', os.path.basename("smartathonLogo.png")))
+    img_logo = Image.open(os.path.join('icons', os.path.basename("smartathonLogo.png")))
     st.image(img_logo, caption='')
     st.header("Theme 1")
     st.header("Visual Pollution Detection App")
