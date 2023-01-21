@@ -113,25 +113,25 @@ def videoInput(device, src):
 def main():
     # -- Sidebar
     st.sidebar.title('⚙️Options')
-    datasrc = st.sidebar.radio("Select input source.", ['Upload your own data.','From test set.'])
+    datasrc = st.sidebar.radio("Select input source:", ['Upload your own data.','From test set.'])
     
         
                 
-    option = st.sidebar.radio("Select input type.", ['Image', 'Video'])
+    option = st.sidebar.radio("Select input type:", ['Image', 'Video'])
    
 #     model_choice = st.sidebar.radio("Select Model.", ['yoloXSmart', 'yoloLSmart','yoloMSmart','yoloSSmartPS128','yoloNSmartPS128'])
     if torch.cuda.is_available():
-        deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], disabled = False, index=1)
+        deviceoption = st.sidebar.radio("Select compute Device:", ['cpu', 'cuda'], disabled = False, index=1)
     else:
-        deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], disabled = True, index=0)
+        deviceoption = st.sidebar.radio("Select compute Device:", ['cpu', 'cuda'], disabled = True, index=0)
     # -- End of Sidebar
     
     img_logo = Image.open(os.path.join('data/images', os.path.basename("smartathonLogo.png")))
-    st.image(img_logo, caption='Smartathon')
-    st.title("Visual Pollution Detection App")
+    st.image(img_logo, caption='')
+    st.title("Theme 1: Visual Pollution Detection App")
     st.caption('developed by: Maseal Alghamdi, Abdullah Alshaya, Abdullah Alzaben, Anfal AlAwajy, Nada AlMugren, Sarah Alghamdi')
 #     st.header('👀 Visual Pollution Detection')
-    st.subheader('👈🏻 Select options left-haned menu bar.')
+    st.subheader('👈🏻 Select options left-haned menu bar, then press detect')
     
     if option == "Image":    
         imageInput(deviceoption, datasrc)
