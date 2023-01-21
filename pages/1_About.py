@@ -24,5 +24,4 @@ our wonderful team consists of:
 
            
             """)
-
- st.markdown("https://smartathon.hackerearth.com/challenges/hackathon/smartathon-2/dashboard/ae23dcf/team/?utm_source=team-invite&utm_medium=email&utm_campaign=hackathons")
+st.markdown("[our Smartathon link] (https://smartathon.hackerearth.com/challenges/hackathon/smartathon-2/dashboard/ae23dcf/team/?utm_source=team-invite&utm_medium=email&utm_campaign=hackathons"))
