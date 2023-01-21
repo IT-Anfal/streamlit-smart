@@ -118,6 +118,8 @@ def main():
         
                 
     option = st.sidebar.radio("Select input type.", ['Image', 'Video'])
+   
+    model_choice = st.sidebar.radio("Select Model.", ['yoloXSmart', 'yoloLSmart','yoloMSmart','yoloSSmartPS128','yoloNSmartPS128'])
     if torch.cuda.is_available():
         deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], disabled = False, index=1)
     else:
@@ -130,11 +132,39 @@ def main():
     st.caption('developed by: Maseal Alghamdi, Abdullah Alshaya, Abdullah Alzaben, Anfal AlAwajy, Nada AlMugren, Sarah Alghamdi')
 #     st.header('👀 Visual Pollution Detection')
     st.subheader('👈🏻 Select options left-haned menu bar.')
-    st.sidebar.markdown("https://smartathon.hackerearth.com/challenges/hackathon/smartathon-2/dashboard/ae23dcf/team/?utm_source=team-invite&utm_medium=email&utm_campaign=hackathons")
+    
     if option == "Image":    
         imageInput(deviceoption, datasrc)
     elif option == "Video": 
         videoInput(deviceoption, datasrc)
+        
+    if model_choice == 'yoloXSmart':
+        url = "https://archive.org/download/yoloXSmart/yoloXSmart.pt" #Configure this if you set cfg_enable_url_download to True
+        cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
+        loadModel()
+    
+ 
+    elif model_choice == 'yoloLSmart':
+        url = "https://archive.org/download/yoloLSmart/yoloLSmart.pt" #Configure this if you set cfg_enable_url_download to True
+        cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
+        loadModel()
+        
+    elif model_choice == 'yoloMSmart':
+        url = "https://archive.org/download/yoloLSmart/yoloMSmart.pt" #Configure this if you set cfg_enable_url_download to True
+        cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
+        loadModel()
+   
+ 
+    elif model_choice == 'yoloSSmartPS128':
+        url = "https://archive.org/download/yoloLSmart/yoloSSmartPS128.pt" #Configure this if you set cfg_enable_url_download to True
+        cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
+        loadModel()
+ 
+    else:
+        url = "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt" #Configure this if you set cfg_enable_url_download to True
+        cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
+        loadModel()
+    
 
     
 
