@@ -25,5 +25,5 @@ our wonderful team consists of:
            
             """)
 
-st.write("check out our smartathon [page]((https://smartathon.hackerearth.com/challenges/hackathon/smartathon-2/dashboard/ae23dcf/team/?utm_source=team-invite&utm_medium=email&utm_campaign=hackathons)")
+st.write("check out our smartathon [page](https://smartathon.hackerearth.com/challenges/hackathon/smartathon-2/dashboard/ae23dcf/team/?utm_source=team-invite&utm_medium=email&utm_campaign=hackathons)")
 
