@@ -13,19 +13,19 @@ import time
 cfg_model_path = "models/yourModel.pt" 
 
 cfg_enable_url_download = True
-if cfg_enable_url_download:
-    url = "https://archive.org/download/yoloXSmart/yoloXSmart.pt" #Configure this if you set cfg_enable_url_download to True
-    cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
+# if cfg_enable_url_download:
+#     url = "https://archive.org/download/yoloXSmart/yoloXSmart.pt" #Configure this if you set cfg_enable_url_download to True
+#     cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
 ## END OF CFG
 
-# if cfg_enable_url_download:
-#     urls = [ "https://archive.org/download/yoloXSmart/yoloXSmart.pt","https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloMSmart.pt", "https://archive.org/download/yoloLSmart/yoloSSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt"] #Configure this if you set cfg_enable_url_download to True
-#     cfg_model_path = f"models/{urls[0].split('/')[-1:][0]}"
-#     i = 1
-#     for i in range(len(urls)):
-#         cfg_model_path += f" models/{urls[i].split('/')[-1:][0]}" #config model path from url name   
-#          #cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
-# ## END OF CFG
+if cfg_enable_url_download:
+    urls = [ "https://archive.org/download/yoloXSmart/yoloXSmart.pt","https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloMSmart.pt", "https://archive.org/download/yoloLSmart/yoloSSmartPS128.pt", "https://archive.org/download/yoloLSmart/yoloNSmartPS128.pt"] #Configure this if you set cfg_enable_url_download to True
+    cfg_model_path = f"models/{urls[0].split('/')[-1:][0]}"
+    i = 1
+    for i in range(len(urls)):
+        cfg_model_path += f" models/{urls[i].split('/')[-1:][0]}" #config model path from url name   
+         #cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
+## END OF CFG
 
 
 
@@ -48,19 +48,24 @@ def imageInput(device, src):
                 f.write(image_file.getbuffer())
 
             #call Model prediction--
-            model = torch.hub.load('ultralytics/yolov5', 'custom', path=cfg_model_path, force_reload=True) 
-            model.cuda() if device == 'cuda' else model.cpu()
-            pred = model(imgpath)
-            pred.render()  # render bbox in image
-            for im in pred.ims:
-                im_base64 = Image.fromarray(im)
-                im_base64.save(outputpath)
+            paths = cfg_model_path.split(" ")
+            for path in paths:
+                model = torch.hub.load('ultralytics/yolov5', 'custom', path=path, force_reload=True) 
+                model.cuda() if device == 'cuda' else model.cpu()
+                pred = model(imgpath)
+                pred.render()  # render bbox in image
+                for im in pred.ims:
+                    im_base64 = Image.fromarray(im)
+                    im_base64.save(outputpath)
 
             #--Display predicton
             
-            img_ = Image.open(outputpath)
-            with col2:
-                st.image(img_, caption='Model Prediction(s)', use_column_width='always')
+                img_ = Image.open(outputpath)
+                model_name = f"{path.split('/')[-1:][0]}" 
+                with col2:
+                    st.write(model_name)
+                    st.image(img_, caption='Model Prediction(s)', use_column_width='always')
+            
 
     elif src == 'From test set.': 
         # Image selector slider
