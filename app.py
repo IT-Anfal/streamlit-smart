@@ -128,7 +128,8 @@ def main():
     
     img_logo = Image.open(os.path.join('data/images', os.path.basename("smartathonLogo.png")))
     st.image(img_logo, caption='')
-    st.title("Theme 1: Visual Pollution Detection App")
+    st.title("Theme 1")
+    st.title("Visual Pollution Detection App")
     st.caption('developed by: Maseal Alghamdi, Abdullah Alshaya, Abdullah Alzaben, Anfal AlAwajy, Nada AlMugren, Sarah Alghamdi')
 #     st.header('👀 Visual Pollution Detection')
     st.subheader('👈🏻 Select options left-haned menu bar, then press detect')
