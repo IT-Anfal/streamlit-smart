@@ -132,7 +132,7 @@ def main():
     st.header("Visual Pollution Detection App")
     st.caption('developed by: Maseal Alghamdi, Abdullah Alshaya, Abdullah Alzaben, Anfal AlAwajy, Nada AlMugren, Sarah Alghamdi')
 #     st.header('👀 Visual Pollution Detection')
-    st.subheader('👈🏻 Select options left-haned menu bar, then press detect')
+    st.write('👈🏻 Select options left-haned menu bar, then press detect')
     
     if option == "Image":    
         imageInput(deviceoption, datasrc)
