@@ -66,7 +66,7 @@ def imageInput(device, src):
                 img_ = Image.open(outputpath)
                 model_name = f"{path.split('/')[-1:][0]}" 
                 with col2:
-#                     st.write(model_name)
+
                     st.image(img_, caption=model_name, use_column_width='always')
             
 
@@ -82,6 +82,7 @@ def imageInput(device, src):
             st.image(img, caption='Selected Image', use_column_width='always')
         with col2:            
             if image_file is not None and submit:
+                ims =[]
                 
                 #call Model prediction--
                 paths = cfg_model_path.split(" ")
@@ -90,7 +91,11 @@ def imageInput(device, src):
                     model.cuda() if device == 'cuda' else model.cpu()
                     pred = model(imgpath)
                     pred.render()  # render bbox in image
-                    for im in pred.ims:
+                    ims.append(pred.ims)
+#                     for im in pred.ims:
+#                         im_base64 = Image.fromarray(im)
+#                         im_base64.save(outputpath)
+                for im in ims:
                         im_base64 = Image.fromarray(im)
                         im_base64.save(outputpath)
 
@@ -99,7 +104,8 @@ def imageInput(device, src):
                 img_ = Image.open(outputpath)
                 model_name = f"{path.split('/')[-1:][0]}" 
                 with col2:
-                    st.image(img_, caption=model_name, use_column_width='always')                
+#                     st.image(img_, caption=model_name, use_column_width='always')  
+                    st.image(img_, caption="", use_column_width='always')  
 #     model = torch.hub.load('ultralytics/yolov5', 'custom', path=cfg_model_path, force_reload=True) 
 # #                 pred = model(image_file)
 # #                 pred.render()  # render bbox in image
