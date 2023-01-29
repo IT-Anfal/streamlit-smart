@@ -25,7 +25,7 @@ if cfg_enable_url_download:
     #i = 1
     #for i in range(len(urls)):
     for url in urls:
-        cfg_model_path += f" models/{url.split('/')[-1:][0]}" #config model path from url name   
+        cfg_model_path += f"models/{url.split('/')[-1:][0]} " #config model path from url name   
     
         #cfg_model_path += f" models/{urls[i].split('/')[-1:][0]}" #config model path from url name   
          #cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
