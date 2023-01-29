@@ -151,10 +151,10 @@ def main():
     option = st.sidebar.radio("Select input type:", ['Image', 'Video'])
    
 #     model_choice = st.sidebar.radio("Select Model.", ['yoloXSmart', 'yoloLSmart','yoloMSmart','yoloSSmartPS128','yoloNSmartPS128'])
-#     if torch.cuda.is_available():
-#         deviceoption = st.sidebar.radio("Select compute Device:", ['cpu', 'cuda'], disabled = False, index=1)
-#     else:
-#         deviceoption = st.sidebar.radio("Select compute Device:", ['cpu', 'cuda'], disabled = True, index=0)
+    if torch.cuda.is_available():
+        deviceoption = st.sidebar.radio("Select compute Device:", ['cpu', 'cuda'], disabled = False, index=1)
+    else:
+        deviceoption = st.sidebar.radio("Select compute Device:", ['cpu', 'cuda'], disabled = True, index=0)
     # -- End of Sidebar
     
     img_logo = Image.open(os.path.join('icons', os.path.basename("smartathonLogo.png")))
