@@ -26,6 +26,7 @@ if cfg_enable_url_download:
     #for i in range(len(urls)):
     for url in urls:
         cfg_model_path += f" models/{url.split('/')[-1:][0]}" #config model path from url name   
+    print("model paths: " + cfg_model_path)
         #cfg_model_path += f" models/{urls[i].split('/')[-1:][0]}" #config model path from url name   
          #cfg_model_path = f"models/{url.split('/')[-1:][0]}" #config model path from url name
 ## END OF CFG
@@ -207,6 +208,7 @@ if __name__ == '__main__':
 # Downlaod Model from url.    
 @st.cache
 def loadModel():
+    
 #     start_dl = time.time()
 #     model_file = wget.download(url, out="models/")
 #     finished_dl = time.time()
