@@ -53,7 +53,7 @@ def imageInput(device, src):
 
             #call Model prediction--
             paths = cfg_model_path.split(" ")
-            for(i=0 ; i<len(path); i+=2)
+            for(i = 0 ; i<len(path); i += 2)
                 torch.hub.load('ultralytics/yolov5', 'custom', path=path[i], force_reload=True)
                 sys.modules.pop('models')  # ¯\_(ツ)_/¯
                 torch.hub.load('ultralytics/yolov5', 'custom', path=path[i+1], force_reload=True)
