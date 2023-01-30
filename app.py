@@ -8,7 +8,7 @@ from datetime import datetime
 import os
 import wget
 import time
-import sys
+
 
 ## CFG
 cfg_model_path = "models/yourModel.pt" 
