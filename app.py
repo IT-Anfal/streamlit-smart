@@ -8,6 +8,7 @@ from datetime import datetime
 import os
 import wget
 import time
+import sys
 
 
 ## CFG
@@ -235,7 +236,7 @@ def loadModel():
         finished_dl = time.time()
         print(f"Model Downloaded, ETA:{finished_dl-start_dl}")
         
-    print("model paths: " + cfg_model_path)
+    print("model paths: " + cfg_model_path, file=sys.stdout)
     
 if cfg_enable_url_download:
     loadModel()
