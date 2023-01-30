@@ -53,14 +53,26 @@ def imageInput(device, src):
 
             #call Model prediction--
             paths = cfg_model_path.split(" ")
-            for path in paths:
-                model = torch.hub.load('ultralytics/yolov5', 'custom', path=path, force_reload=True) 
-                model.cuda() if device == 'cuda' else model.cpu()
-                pred = model(imgpath)
-                pred.render()  # render bbox in image
-                for im in pred.ims:
-                    im_base64 = Image.fromarray(im)
-                    im_base64.save(outputpath)
+            for(i=0 ; i<len(path); i+=2)
+                torch.hub.load('ultralytics/yolov5', 'custom', path=path[i], force_reload=True)
+                sys.modules.pop('models')  # ¯\_(ツ)_/¯
+                torch.hub.load('ultralytics/yolov5', 'custom', path=path[i+1], force_reload=True)
+
+            model.cuda() if device == 'cuda' else model.cpu()
+            pred = model(imgpath)
+            pred.render()  # render bbox in image
+            for im in pred.ims:
+                im_base64 = Image.fromarray(im)
+                im_base64.save(outputpath)
+            
+#             for path in paths:
+#                 model = torch.hub.load('ultralytics/yolov5', 'custom', path=path, force_reload=True) 
+#                 model.cuda() if device == 'cuda' else model.cpu()
+#                 pred = model(imgpath)
+#                 pred.render()  # render bbox in image
+#                 for im in pred.ims:
+#                     im_base64 = Image.fromarray(im)
+#                     im_base64.save(outputpath)
 
             #--Display predicton
             
