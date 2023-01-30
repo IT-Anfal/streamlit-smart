@@ -236,7 +236,7 @@ def loadModel():
         finished_dl = time.time()
         print(f"Model Downloaded, ETA:{finished_dl-start_dl}")
         
-    print("model paths: " + cfg_model_path, file=sys.stdout)
+    print("model paths: " + cfg_model_path)
     
 if cfg_enable_url_download:
     loadModel()
