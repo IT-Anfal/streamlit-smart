@@ -54,28 +54,28 @@ def imageInput(device, src):
 
             #call Model prediction--
             paths = cfg_model_path.split(" ")
-            for i in range(0, len(paths), 2):
-                torch.hub.load('ultralytics/yolov5', 'custom', path=paths[i], force_reload=True)
-                sys.modules.pop('models')  # ¯\_(ツ)_/¯
-                x = i + 1
-                if x < len(paths):
-                    torch.hub.load('ultralytics/yolov5', 'custom', path=paths[x], force_reload=True)
+#             for i in range(0, len(paths), 2):
+#                 torch.hub.load('ultralytics/yolov5', 'custom', path=paths[i], force_reload=True)
+#                 sys.modules.pop('models')  # ¯\_(ツ)_/¯
+#                 x = i + 1
+#                 if x < len(paths):
+#                     torch.hub.load('ultralytics/yolov5', 'custom', path=paths[x], force_reload=True)
 
-            model.cuda() if device == 'cuda' else model.cpu()
-            pred = model(imgpath)
-            pred.render()  # render bbox in image
-            for im in pred.ims:
-                im_base64 = Image.fromarray(im)
-                im_base64.save(outputpath)
+#             model.cuda() if device == 'cuda' else model.cpu()
+#             pred = model(imgpath)
+#             pred.render()  # render bbox in image
+#             for im in pred.ims:
+#                 im_base64 = Image.fromarray(im)
+#                 im_base64.save(outputpath)
             
-#             for path in paths:
-#                 model = torch.hub.load('ultralytics/yolov5', 'custom', path=path, force_reload=True) 
-#                 model.cuda() if device == 'cuda' else model.cpu()
-#                 pred = model(imgpath)
-#                 pred.render()  # render bbox in image
-#                 for im in pred.ims:
-#                     im_base64 = Image.fromarray(im)
-#                     im_base64.save(outputpath)
+            for path in paths:
+                model = torch.hub.load('ultralytics/yolov5', 'custom', path=path, force_reload=True) 
+                model.cuda() if device == 'cuda' else model.cpu()
+                pred = model(imgpath)
+                pred.render()  # render bbox in image
+                for im in pred.ims:
+                    im_base64 = Image.fromarray(im)
+                    im_base64.save(outputpath)
 
             #--Display predicton
             
