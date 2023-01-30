@@ -58,7 +58,8 @@ def imageInput(device, src):
                 torch.hub.load('ultralytics/yolov5', 'custom', path=paths[i], force_reload=True)
                 sys.modules.pop('models')  # ¯\_(ツ)_/¯
                 x = i + 1
-                torch.hub.load('ultralytics/yolov5', 'custom', path=paths[x], force_reload=True)
+                if x < len(paths):
+                    torch.hub.load('ultralytics/yolov5', 'custom', path=paths[x], force_reload=True)
 
             model.cuda() if device == 'cuda' else model.cpu()
             pred = model(imgpath)
